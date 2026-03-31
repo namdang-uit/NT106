@@ -16,5 +16,21 @@ namespace DrawingClient
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            Player abc = new Player();
+            flowLayoutPanel1.Controls.Add(abc);
+        }
     }
 }
