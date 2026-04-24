@@ -32,9 +32,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btn_ClearCanvas = new System.Windows.Forms.Button();
+            this.btn_Erase = new System.Windows.Forms.Button();
+            this.btn_Color = new System.Windows.Forms.Button();
+            this.btn_Undo = new System.Windows.Forms.Button();
+            this.btn_Pen = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.roundedPanel2 = new RoundedPanel();
+            this.picCanvas = new System.Windows.Forms.PictureBox();
             this.roundedPanel1 = new RoundedPanel();
             this.player2 = new DrawingClient.Player();
             this.player1 = new DrawingClient.Player();
+            this.roundedPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
             this.roundedPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +97,90 @@
             this.button4.TabIndex = 4;
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // btn_ClearCanvas
+            // 
+            this.btn_ClearCanvas.Location = new System.Drawing.Point(635, 116);
+            this.btn_ClearCanvas.Name = "btn_ClearCanvas";
+            this.btn_ClearCanvas.Size = new System.Drawing.Size(167, 45);
+            this.btn_ClearCanvas.TabIndex = 6;
+            this.btn_ClearCanvas.Text = "Xoá bảng";
+            this.btn_ClearCanvas.UseVisualStyleBackColor = true;
+            this.btn_ClearCanvas.Click += new System.EventHandler(this.btn_ClearCanvas_Click);
+            // 
+            // btn_Erase
+            // 
+            this.btn_Erase.Location = new System.Drawing.Point(851, 123);
+            this.btn_Erase.Name = "btn_Erase";
+            this.btn_Erase.Size = new System.Drawing.Size(159, 37);
+            this.btn_Erase.TabIndex = 7;
+            this.btn_Erase.Text = "Tẩy";
+            this.btn_Erase.UseVisualStyleBackColor = true;
+            this.btn_Erase.Click += new System.EventHandler(this.btn_Erase_Click);
+            // 
+            // btn_Color
+            // 
+            this.btn_Color.Location = new System.Drawing.Point(1113, 100);
+            this.btn_Color.Name = "btn_Color";
+            this.btn_Color.Size = new System.Drawing.Size(107, 60);
+            this.btn_Color.TabIndex = 8;
+            this.btn_Color.Text = "Chọn màu";
+            this.btn_Color.UseVisualStyleBackColor = true;
+            this.btn_Color.Click += new System.EventHandler(this.btn_Color_Click);
+            // 
+            // btn_Undo
+            // 
+            this.btn_Undo.Location = new System.Drawing.Point(1344, 100);
+            this.btn_Undo.Name = "btn_Undo";
+            this.btn_Undo.Size = new System.Drawing.Size(111, 52);
+            this.btn_Undo.TabIndex = 9;
+            this.btn_Undo.Text = "Undo";
+            this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
+            this.btn_Undo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_Undo_KeyDown);
+            // 
+            // btn_Pen
+            // 
+            this.btn_Pen.Location = new System.Drawing.Point(834, 52);
+            this.btn_Pen.Name = "btn_Pen";
+            this.btn_Pen.Size = new System.Drawing.Size(105, 35);
+            this.btn_Pen.TabIndex = 10;
+            this.btn_Pen.Text = "Pen";
+            this.btn_Pen.UseVisualStyleBackColor = true;
+            this.btn_Pen.Click += new System.EventHandler(this.btn_Pen_Click);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(1504, 111);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(64, 74);
+            this.btn_Save.TabIndex = 11;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // roundedPanel2
+            // 
+            this.roundedPanel2.BorderRadius = 40;
+            this.roundedPanel2.Controls.Add(this.picCanvas);
+            this.roundedPanel2.Location = new System.Drawing.Point(430, 197);
+            this.roundedPanel2.Name = "roundedPanel2";
+            this.roundedPanel2.Size = new System.Drawing.Size(1364, 503);
+            this.roundedPanel2.TabIndex = 5;
+            // 
+            // picCanvas
+            // 
+            this.picCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picCanvas.Location = new System.Drawing.Point(0, 0);
+            this.picCanvas.Name = "picCanvas";
+            this.picCanvas.Size = new System.Drawing.Size(1364, 503);
+            this.picCanvas.TabIndex = 0;
+            this.picCanvas.TabStop = false;
+            this.picCanvas.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.picCanvas_Paint);
+            this.picCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseDown);
+            this.picCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseMove);
+            this.picCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseUp);
+            // 
             // roundedPanel1
             // 
             this.roundedPanel1.BackColor = System.Drawing.Color.Transparent;
@@ -122,6 +216,13 @@
             this.BackgroundImage = global::DrawingClient.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.btn_Save);
+            this.Controls.Add(this.btn_Pen);
+            this.Controls.Add(this.btn_Undo);
+            this.Controls.Add(this.btn_Color);
+            this.Controls.Add(this.btn_Erase);
+            this.Controls.Add(this.btn_ClearCanvas);
+            this.Controls.Add(this.roundedPanel2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -132,6 +233,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
+            this.roundedPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();
             this.roundedPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -146,6 +249,14 @@
         private System.Windows.Forms.Button button4;
         private Player player1;
         private Player player2;
+        private RoundedPanel roundedPanel2;
+        private System.Windows.Forms.PictureBox picCanvas;
+        private System.Windows.Forms.Button btn_ClearCanvas;
+        private System.Windows.Forms.Button btn_Erase;
+        private System.Windows.Forms.Button btn_Color;
+        private System.Windows.Forms.Button btn_Undo;
+        private System.Windows.Forms.Button btn_Pen;
+        private System.Windows.Forms.Button btn_Save;
     }
 }
 
