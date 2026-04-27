@@ -37,7 +37,7 @@
             this.btn_Color = new System.Windows.Forms.Button();
             this.btn_Undo = new System.Windows.Forms.Button();
             this.btn_Pen = new System.Windows.Forms.Button();
-            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Replay = new System.Windows.Forms.Button();
             this.roundedPanel2 = new RoundedPanel();
             this.picCanvas = new System.Windows.Forms.PictureBox();
             this.roundedPanel1 = new RoundedPanel();
@@ -148,15 +148,15 @@
             this.btn_Pen.UseVisualStyleBackColor = true;
             this.btn_Pen.Click += new System.EventHandler(this.btn_Pen_Click);
             // 
-            // btn_Save
+            // btn_Replay
             // 
-            this.btn_Save.Location = new System.Drawing.Point(1504, 111);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(64, 74);
-            this.btn_Save.TabIndex = 11;
-            this.btn_Save.Text = "Save";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            this.btn_Replay.Location = new System.Drawing.Point(1470, 111);
+            this.btn_Replay.Name = "btn_Replay";
+            this.btn_Replay.Size = new System.Drawing.Size(98, 74);
+            this.btn_Replay.TabIndex = 11;
+            this.btn_Replay.Text = "Replay";
+            this.btn_Replay.UseVisualStyleBackColor = true;
+            this.btn_Replay.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // roundedPanel2
             // 
@@ -216,7 +216,7 @@
             this.BackgroundImage = global::DrawingClient.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
-            this.Controls.Add(this.btn_Save);
+            this.Controls.Add(this.btn_Replay);
             this.Controls.Add(this.btn_Pen);
             this.Controls.Add(this.btn_Undo);
             this.Controls.Add(this.btn_Color);
@@ -256,7 +256,7 @@
         private System.Windows.Forms.Button btn_Color;
         private System.Windows.Forms.Button btn_Undo;
         private System.Windows.Forms.Button btn_Pen;
-        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_Replay;
     }
 }
 

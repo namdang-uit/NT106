@@ -145,14 +145,13 @@ namespace DrawingClient
                 int lastIndex = allStrokes.Count - 1;
                 // Xóa nét đó khỏi bộ nhớ
                 allStrokes.RemoveAt(lastIndex);
-                // Yêu cầu vẽ lại (lúc này nét cuối đã biến mất)
                 picCanvas.Invalidate();
             }
         }
 
         private void btn_Erase_Click(object sender, EventArgs e)
         {
-            // Đổi màu thành màu nền của PictureBox (hoặc Color.White)
+            // Đổi màu thành màu nền của PictureBox
             currentColor = picCanvas.BackColor;
             // Tăng size bút 
             currentSize = 20;
@@ -199,17 +198,68 @@ namespace DrawingClient
                 }
             }
         }
-
-        private void btn_Save_Click(object sender, EventArgs e)
+        public async Task ReplayDrawingAsync(List<Stroke> strokesToReplay)
         {
+            // Tạm thời vô hiệu hóa việc người dùng vẽ bậy vào màn hình lúc đang chiếu lại
+            picCanvas.Enabled = false;
 
+            // Xóa sạch bảng vẽ hiện tại
+            allStrokes.Clear();
+            picCanvas.Invalidate();
+
+            // Vòng lặp tua lại
+            foreach (var originalStroke in strokesToReplay)
+            {
+                Stroke replayStroke = new Stroke
+                {
+                    StrokeColor = originalStroke.StrokeColor,
+                    StrokeSize = originalStroke.StrokeSize
+                };
+                allStrokes.Add(replayStroke);
+
+                foreach (var point in originalStroke.Points)
+                {
+                    replayStroke.Points.Add(point);
+                    picCanvas.Invalidate();
+
+                    
+                    await Task.Delay(1);
+                }
+            }
+
+            // Mở khóa lại bảng vẽ sau khi chiếu xong
+            picCanvas.Enabled = true;
         }
-    }
+        private async void btn_Save_Click(object sender, EventArgs e)
+        {
+            if (allStrokes.Count == 0)
+            {
+                MessageBox.Show("Bạn phải vẽ gì đó lên bảng trước đã!", "Thông báo");
+                return;
+            }
 
+            // BƯỚC CỰC KỲ QUAN TRỌNG: Tạo bản sao (Clone) của bức tranh hiện tại
+            // Phải dùng JSON để clone, nếu không khi hàm Replay gọi lệnh Clear(), dữ liệu gốc sẽ mất sạch!
+            string jsonClone = JsonConvert.SerializeObject(allStrokes);
+            List<Stroke> clonedStrokes = JsonConvert.DeserializeObject<List<Stroke>>(jsonClone);
+
+            // Bắt đầu gọi hàm chiếu lại với bản sao vừa tạo
+            await ReplayDrawingAsync(clonedStrokes);
+            allStrokes.Clear();
+            picCanvas.Invalidate();
+            // Thông báo khi chiếu xong (Đoạn này sau này sẽ dùng để chuyển lượt chơi)
+            MessageBox.Show("Đã diễn hoạ xong quá trình vẽ của bạn!", "Hoàn tất");
+        }
+        // Hàm Replay độc lập (để dùng chung cho mọi trường hợp sau này)
+        
+    }
+    // Lớp Stroke để lưu trữ thông tin về mỗi nét vẽ, bao gồm màu sắc, kích thước và danh sách các điểm tạo nên nét đó
     public class Stroke
     {
         public Color StrokeColor { get; set; }
         public int StrokeSize { get; set; }
         public List<Point> Points { get; set; } = new List<Point>();
     }
+
+
 }
