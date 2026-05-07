@@ -136,7 +136,6 @@
             this.btn_Undo.Text = "Undo";
             this.btn_Undo.UseVisualStyleBackColor = true;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
-            this.btn_Undo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_Undo_KeyDown);
             // 
             // btn_Pen
             // 
@@ -175,7 +174,6 @@
             this.picCanvas.Size = new System.Drawing.Size(1364, 503);
             this.picCanvas.TabIndex = 0;
             this.picCanvas.TabStop = false;
-            this.picCanvas.Click += new System.EventHandler(this.pictureBox1_Click);
             this.picCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.picCanvas_Paint);
             this.picCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseDown);
             this.picCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseMove);
@@ -207,7 +205,6 @@
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(260, 65);
             this.player1.TabIndex = 0;
-            this.player1.Load += new System.EventHandler(this.player1_Load);
             // 
             // Form1
             // 
@@ -232,7 +229,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.roundedPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();
             this.roundedPanel1.ResumeLayout(false);
