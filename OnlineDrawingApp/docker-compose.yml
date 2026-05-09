@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: gartic_loadbalancer
+    ports:
+      - "8080:8080" # Ánh xạ cổng 8080 của Nginx ra cổng 8080 của máy bạn
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
